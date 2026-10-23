@@ -1123,3 +1123,84 @@ html, body { overscroll-behavior: none; touch-action: none; }
 @media (orientation: portrait) and (pointer: coarse) and (max-width: 600px) { #wl6-rotate { display: grid; } }
 
 .wl6-copy { font-size: 10px; font-weight: 800; letter-spacing: .12em; color: var(--ink-muted); margin: 6px 0 2px; text-transform: uppercase; }
+
+/* ===== phones in landscape (viewport height ≤ 480): compact HUD, small touch cluster, intro that fits ===== */
+@media (max-height: 480px) {
+  :root { --hud-font: 7.5px; }
+  #mission { max-width: 34vw; padding: .95em .9em .5em !important; }
+  #mission #chapter { display: none; }
+  #mission #missionName { font-size: 1.15em; }
+  #mission #runPrep45 { display: none; }
+  #lifePanel { width: 14em; }
+  #threadHud .threadState, #threadState { display: none; }
+  #speedHud43 { display: none !important; }
+  #toast { bottom: 4.5em; max-width: 70vw; font-size: 9px; }
+  #unsafeWarning { bottom: 5em; }
+  #passiveChip51 { transform: scale(.85); transform-origin: left bottom; }
+  /* touch cluster: 1 2 / 3 Q at 44 px, pause lives in the gear (⚙ pauses and opens settings) */
+  #wl6-tbtns { right: 8px; bottom: 8px; grid-template-columns: repeat(2, 44px); gap: 6px; }
+  #wl6-tbtns button { width: 44px; height: 44px; font-size: 15px; border-width: 2px; box-shadow: 0 3px 0 var(--outline); }
+  #wl6-tbtns button.esc { display: none; }
+  #wl6-stick { width: 96px; height: 96px; margin: -48px 0 0 -48px; }
+  #wl6-stick i { width: 42px; height: 42px; }
+  html.wl6-touch #passiveChip51 { left: .6em; bottom: .6em; }
+}
+/* very short (iPhone landscape with browser bars ≈ 330–400 px): the intro becomes a one-screen card */
+@media (max-height: 430px) {
+  #intro { align-items: flex-start; overflow-y: auto; }
+  #intro .card { margin: 6px auto; padding: 8px 14px 16px !important; gap: 4px !important; max-height: none; width: min(560px, 96vw); }
+  #intro .purlBadge { display: none; }
+  #intro .logo { font-size: 26px !important; line-height: 1; }
+  #intro .logo small { font-size: 7px !important; letter-spacing: .3em; margin-top: 3px; }
+  #intro .copy { display: none; }
+  #intro .wl6-diff, #intro .diffPicker { padding: 5px 10px !important; gap: 2px !important; }
+  #intro .difficultyName b, #intro .diffName { font-size: 11px !important; }
+  #intro .wl6-diff small, #intro .diffSub { font-size: 8px !important; }
+  #intro .wl6-diff .diffDesc, #intro .difficultyDesc { font-size: 9px !important; }
+  #intro .primary { padding: 7px 20px !important; font-size: 13px !important; }
+  #intro .wl6-copy { display: none; }
+  #intro .wl6-intro-links button { padding: 5px 9px !important; font-size: 10px !important; }
+  #intro .wl6-intro-links { gap: 6px !important; margin-top: 2px !important; }
+}
+/* phones: overlays that fit (port, level end, wreck, help) and a boarding board that works at 340 px tall */
+@media (max-height: 480px) {
+  .overlay .card { padding: 10px 16px 12px !important; max-height: 100vh; width: min(820px, 96vw); }
+  .overlay .card .title, .overlay .card h1, .overlay .card h2 { font-size: 20px !important; line-height: 1.1 !important; margin: 2px 0 !important; }
+  .overlay .card .kicker { font-size: 9px !important; }
+  .stats { gap: 6px !important; margin: 6px 0 !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .stat { padding: 6px 6px 6px !important; box-shadow: 0 3px 0 #182119 !important; }
+  .stat strong { font-size: 16px !important; }
+  .stat span { font-size: 7px !important; margin-top: 2px !important; }
+  .unlock { padding: 6px 8px !important; margin: 4px 0 !important; }
+  .wl6-endtitle { margin-bottom: 3px !important; }
+  .overlay .card .row { margin-top: 4px !important; gap: 6px !important; }
+  .overlay .card .row button { padding: 7px 12px !important; font-size: 11px !important; }
+  #fieldChoice .card, #fieldChoices { gap: 6px !important; }
+  #fieldChoices .fieldChoice44, #fieldChoices > button { padding: 6px !important; }
+  /* help: shorter rows */
+  .wl6-helpflow { font-size: 9px !important; }
+  /* boarding board */
+  #armyBattle { padding: 0 !important; }
+  .armyShell { height: 100vh !important; max-height: none !important; padding: 6px 8px 6px !important; gap: 4px !important; border-radius: 0 !important; overflow: auto; }
+  .armyShell::before { display: none; }
+  .armyTop .kicker { display: none; }
+  .armyTitle b { font-size: 13px !important; }
+  .armyPill { padding: 3px 7px !important; font-size: 10px !important; gap: 4px !important; }
+  .armyMain { grid-template-columns: minmax(0, 1fr) 132px !important; gap: 6px !important; }
+  .battleBoardWrap { padding: 6px !important; gap: 4px !important; border-radius: 12px !important; }
+  .wl6-boss-head { padding: 3px 8px !important; gap: 2px 8px !important; }
+  .wl6-boss-head .wl6-portrait, .wl6-boss-head .wl6-portrait canvas { width: 28px !important; height: 28px !important; }
+  .battleBoard { width: min(100%, calc((100vh - 118px) * 1.4)) !important; gap: 3px !important; padding: 4px !important; }
+  .armyHint { display: none !important; }
+  .armySide { grid-template-rows: minmax(0, 1fr) !important; gap: 4px !important; }
+  .armyBossInfo43, .armyHelp, .armyLog { display: none !important; }
+  .unitCards { display: grid !important; gap: 4px !important; overflow: auto; }
+  .unitCard { grid-template-columns: 30px 1fr !important; padding: 3px 6px !important; gap: 6px !important; border-radius: 10px !important; }
+  .unitCard .wl6-portrait, .unitCard .wl6-portrait canvas { width: 30px !important; height: 30px !important; border-radius: 8px !important; }
+  .unitCard b { font-size: 10px !important; }
+  .unitCard .wl6-unitstats, .unitCard .wl6-lvpips { display: none !important; }
+  .armyActions { gap: 6px !important; }
+  .armyActions .left b { font-size: 11px !important; }
+  .armyActions button { padding: 6px 12px !important; font-size: 11px !important; }
+  .armyBattleResult > div { padding: 12px !important; gap: 6px !important; }
+}
