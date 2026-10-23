@@ -1204,3 +1204,20 @@ html, body { overscroll-behavior: none; touch-action: none; }
   .armyActions button { padding: 6px 12px !important; font-size: 11px !important; }
   .armyBattleResult > div { padding: 12px !important; gap: 6px !important; }
 }
+
+/* touch buttons with state: cooldown ring (conic), portrait of the rescued crew member, seconds left, dim when empty */
+#wl6-tbtns button { position: relative; overflow: hidden; padding: 0; }
+#wl6-tbtns button .wl6-tring { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(201,162,74,.95) calc(var(--pct, 100) * 1%), rgba(59,42,30,.18) 0); -webkit-mask: radial-gradient(circle, transparent 62%, #000 64%); mask: radial-gradient(circle, transparent 62%, #000 64%); pointer-events: none; }
+#wl6-tbtns button.ready .wl6-tring { background: conic-gradient(#3fae6a 100%, #3fae6a 0); }
+#wl6-tbtns button.q.ready .wl6-tring { background: conic-gradient(#8d6b23 100%, #8d6b23 0); }
+#wl6-tbtns button .wl6-tport { position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; transform: translate(-50%, -54%); pointer-events: none; }
+#wl6-tbtns button .wl6-tnum { position: absolute; right: 6px; bottom: 3px; font-size: 11px; font-weight: 1000; line-height: 1; color: var(--ink-primary); background: rgba(247,241,227,.9); border-radius: 6px; padding: 1px 4px; pointer-events: none; }
+#wl6-tbtns button.q .wl6-tnum { position: static; background: none; font-size: 20px; padding: 0; }
+#wl6-tbtns button .wl6-tcd { position: absolute; inset: 0; display: grid; place-items: center; font-size: 15px; font-weight: 1000; color: #3b2a1e; text-shadow: 0 0 6px rgba(247,241,227,.95); pointer-events: none; }
+#wl6-tbtns button.cooling .wl6-tport { opacity: .35; }
+#wl6-tbtns button.cooling .wl6-tnum { opacity: .5; }
+#wl6-tbtns button.q.cooling .wl6-tnum { opacity: .25; }
+#wl6-tbtns button.locked { opacity: .45; }
+#wl6-tbtns button.locked .wl6-tnum { right: auto; bottom: auto; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 16px; background: none; }
+#wl6-tbtns button.ready:not(.q) { box-shadow: 0 3px 0 var(--outline), 0 0 0 3px rgba(63,174,106,.35); }
+@media (max-height: 480px) { #wl6-tbtns button .wl6-tport { width: 26px; height: 26px; } #wl6-tbtns button .wl6-tnum { font-size: 9px; right: 4px; bottom: 2px; } #wl6-tbtns button .wl6-tcd { font-size: 12px; } #wl6-tbtns button.q .wl6-tnum { font-size: 15px; } }
