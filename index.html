@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="description" content="Red Rope (Cabo Rojo) · sail out of charted waters, lay your red rope and stitch the sea back onto the map before the Black Tide cuts you loose. HTML5 pirate roguelite, English and Spanish.">
+<meta name="theme-color" content="#102a44">
+<meta property="og:title" content="Red Rope · Cabo Rojo">
+<meta property="og:description" content="Lay your red rope, stitch the sea, survive the high tide.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2064%2064'%3E%3Crect%20width%3D'64'%20height%3D'64'%20rx%3D'14'%20fill%3D'%23102a44'%2F%3E%3Cpath%20d%3D'M22%2044h20l-3%206H25z'%20fill%3D'%238a5a33'%20stroke%3D'%232a1b12'%20stroke-width%3D'2'%2F%3E%3Cpath%20d%3D'M32%2012v32'%20stroke%3D'%232a1b12'%20stroke-width%3D'3'%2F%3E%3Cpath%20d%3D'M33%2014c12%206%2014%2018%204%2028H33z'%20fill%3D'%23b8322e'%20stroke%3D'%232a1b12'%20stroke-width%3D'2'%2F%3E%3Cpath%20d%3D'M31%2020c-9%204-11%2014-3%2022h3z'%20fill%3D'%23efe3c6'%20stroke%3D'%232a1b12'%20stroke-width%3D'2'%2F%3E%3C%2Fsvg%3E">
+<title>Red Rope · Cabo Rojo</title>
+<link rel="stylesheet" href="css/wildlace.css" data-wl6>
+
+</head>
+<body>
+<!-- ===== SVG ICON SPRITE (no emoji in chrome) ===== -->
+<svg class="wl6-sprite" aria-hidden="true">
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.6C1.5 7.4 4 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.7 1.4-1.6 2.8-2.7 4.8-2.7 3.2 0 5.7 2.9 4.5 6.4-1.8 5-9.3 9.6-9.3 9.6z"/></symbol>
+  <symbol id="i-spool" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="3.5" rx="1.2"/><rect x="5" y="17.5" width="14" height="3.5" rx="1.2"/><path d="M7.5 6.5v11M16.5 6.5v11M8 9.5l8 1.6M8 12.5l8 1.6M8 15.5l8 1.6"/></symbol>
+  <symbol id="i-sail" viewBox="0 0 24 24"><path d="M11 3v15M11 4c4 2.5 6.5 6.5 7 11h-7M10 6c-2.5 2.5-4 5.5-4.5 9H10"/><path d="M3.5 19.5c2.5 1.4 14.5 1.4 17 0"/></symbol>
+  <symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 15.5c0-1.5 1-2.5 3-3l3-5c.5-1 1.5-1.2 2.5-.6l7.5 4.6c1.3.8 2 2 2 3.5v2H3z"/><path d="M3 15.5h18M9.5 8.5l2.5 1.7M11.5 6.8l2.5 1.7"/></symbol>
+  <symbol id="i-button" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><circle cx="9" cy="14.5" r="1.2" fill="currentColor"/><circle cx="15" cy="14.5" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-pouch" viewBox="0 0 24 24"><path d="M8 7h8l3.5 7.5c1 2.2-.5 5.5-3.5 5.5H8c-3 0-4.5-3.3-3.5-5.5z"/><path d="M8 7c0-2 1.5-3.5 4-3.5S16 5 16 7M6.5 7h11"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V3M6 4h11l-2.5 4 2.5 4H6"/></symbol>
+  <symbol id="i-units" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M11 20c0-3 2.2-5 5-5s5 2 5 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6c1.2 0 2 .8 2 2V20c0-1-.8-1.8-2-1.8H4zM20 4.5h-6c-1.2 0-2 .8-2 2V20c0-1 .8-1.8 2-1.8h6z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><circle cx="16.5" cy="7.5" r="3.5"/><path d="M14 10l-9.5 9.5M9 13.5l1.5 1.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5v.7"/><circle cx="12" cy="17" r=".8" fill="currentColor"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 10v4h3l4 3.5v-11L7 10zM15 9.5a3.5 3.5 0 0 1 0 5M17.5 7a7 7 0 0 1 0 10"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 10v4h3l4 3.5v-11L7 10zM15 9.5l5 5M20 9.5l-5 5"/></symbol>
+  <symbol id="i-needle" viewBox="0 0 24 24"><path d="M4 20L18 6"/><path d="M18 6a2.4 2.4 0 1 1 1.4-1.4"/><path d="M4 20c2-1 3-1.5 5-1"/></symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24"><path d="M14.5 4.5L20 10l-9 9-5.5-5.5zM4 20l3-3M9 13l2 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></symbol>
+  <symbol id="i-range" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13h6l-1 8 9-11h-6z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M8.5 8.5c-2 0-3.5 1.6-3.5 3.5s1.5 3.5 3.5 3.5c3 0 4-7 7-7 2 0 3.5 1.6 3.5 3.5s-1.5 3.5-3.5 3.5c-3 0-4-7-7-7z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="17.5" r="2.5"/><path d="M8.7 8.2L20 17M8.7 15.8L20 7"/></symbol>
+  <symbol id="i-thread" viewBox="0 0 24 24"><path d="M3 14c3-6 6 6 9 0s6 6 9 0"/></symbol>
+  <symbol id="i-character" viewBox="0 0 24 24"><circle cx="12" cy="9" r="4.5"/><path d="M4.5 21c0-4 3.4-7 7.5-7s7.5 3 7.5 7"/></symbol>
+  <symbol id="i-pet" viewBox="0 0 24 24"><ellipse cx="12" cy="13.5" rx="7" ry="6"/><path d="M6 9L4.5 3.5 9 7M18 9l1.5-5.5L15 7"/><circle cx="9.5" cy="13" r=".9" fill="currentColor"/><circle cx="14.5" cy="13" r=".9" fill="currentColor"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M12 7.5V12M12 12l-5 3.8M12 12l5 3.8"/></symbol>
+  <symbol id="i-skull" viewBox="0 0 24 24"><path d="M12 3a8 8 0 0 0-8 8c0 3 1.7 5.5 4 6.5V21h8v-3.5c2.3-1 4-3.5 4-6.5a8 8 0 0 0-8-8z"/><circle cx="9" cy="11" r="1.6" fill="currentColor"/><circle cx="15" cy="11" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11" rx="2"/><path d="M12 9v11M3.5 13h17M12 9c-1.5-2-3.5-4-5.5-3.5S5.5 8.5 7 9zm0 0c1.5-2 3.5-4 5.5-3.5S18.5 8.5 17 9z"/></symbol>
+  <symbol id="i-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.3" fill="currentColor"/><circle cx="15" cy="15" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+</svg>
+
+<div id="wl6-rotate"><div><span class="wl6-rot-ico">📱</span><span data-t="rotate">Gira el dispositivo para navegar</span></div></div>
+<div id="game"><canvas id="c"></canvas></div>
+
+<!-- ===== GAMEPLAY HUD · 6 clusters, world stays dominant ===== -->
+<div class="hud">
+  <!-- 1 · VITALS (top-left) -->
+  <div id="lifePanel" class="panel wl6-hud-tag">
+    <div class="label" data-t="hull">CASCO</div>
+    <div id="heartRow" class="hearts"></div>
+    <div class="mend"><i id="mendFill"></i></div>
+    <div class="lifeHint"></div>
+    <div id="threadHud" class="threadHud">
+      <canvas class="wl6-spool" id="wl6-spoolCanvas" width="48" height="58" aria-hidden="true"></canvas>
+      <div class="threadHead"><span data-t="rope">Cabo</span><em id="wl6-ropeBonus" style="display:none"></em><span id="threadNumbers">0 / 0 m</span></div>
+      <div class="threadTrack"><i id="threadFill" class="threadFill"></i></div>
+      <div id="threadState" class="threadState" data-t="ropeReady">Listo para tender cabo</div>
+    </div>
+    <div id="speedHud43" class="speedHud43">
+      <span class="wl6-hud-ico"><svg class="wl6-icon"><use href="#i-sail"/></svg></span>
+      <div class="speedRow43"><span data-t="wind">VIENTO</span><b id="speedValue43" class="speedValue43">100%</b></div>
+      <div class="speedTrack43"><i id="speedFill43" class="speedFill43"></i></div>
+    </div>
+  </div>
+
+  <!-- 2 · LEVEL TAG (top-center, hanging label) -->
+  <div id="mission" class="panel wl6-hud-tag">
+    <div id="chapter" class="chapter">CARTA 1 DE 10</div>
+    <div id="missionName" class="missionName">Mesa de Retazos</div>
+    <div id="missionProgress" class="progress">...</div>
+    <div id="wl6-objective"></div>
+    <span id="levelRuleBadge"></span>
+    <span id="wl6-diffChip" data-d="0"></span>
+    <span id="wl6-tide" class="calm"></span>
+    <div id="runPrep45"><span class="prepChip45"><b id="prepBuild45">0</b></span><span class="prepChip45"><b id="prepCap45">0</b></span><div id="prepArmy45" class="prepArmy45"></div></div>
+  </div>
+
+  <!-- 3 · ECONOMY + MENU (top-right) -->
+  <div id="right" class="wl6-hud-tag">
+    <div id="score" class="panel score">0<small></small></div>
+    <div id="wl6-wallet">
+      <button id="walletBtn" class="iconBtn" data-t-title="shop" title="Mercado" aria-label="Mercado"><span class="walletCoin"></span><span id="walletCount">0</span></button>
+      <span id="riskButtons50" title="Botones en riesgo hasta superar el nivel">0</span>
+    </div>
+    <div class="buttons">
+      <button id="bookBtn" class="iconBtn" data-t-title="book" title="Bitácora" aria-label="Bitácora"><svg class="wl6-icon"><use href="#i-book"/></svg></button>
+      <button id="skillBtn" class="iconBtn" data-t-title="tree" title="Carta de navegación" aria-label="Carta de navegación"><svg class="wl6-icon"><use href="#i-tree"/></svg></button>
+      <button id="helpBtn" class="iconBtn" data-t-title="help" title="Cómo se navega" aria-label="Ayuda"><svg class="wl6-icon"><use href="#i-help"/></svg></button>
+      <button id="soundBtn" class="iconBtn" title="Sonido" aria-label="Sonido"><svg class="wl6-icon"><use href="#i-sound"/></svg></button>
+      <button id="settingsBtn" class="iconBtn" data-t-title="settings" title="Ajustes" aria-label="Ajustes"><svg class="wl6-icon"><use href="#i-gear"/></svg></button>
+    </div>
+  </div>
+
+  <!-- 4 · ACTIVE BOSS -->
+  <div id="bossBar" class="wl6-hud-tag deep">
+    <div class="wl6-portrait"><canvas id="wl6-bossPortrait" width="84" height="84"></canvas></div>
+    <div id="bossName" class="bossName" data-t="boss">JEFE</div>
+    <div class="bossTrack"><div id="bossFill" class="bossFill"></div></div>
+    <div id="bossHint" class="bossHint" data-t="bossHint">Descubre cómo dañarlo.</div>
+  </div>
+
+  <!-- 5 · CHARACTER + PASSIVE (bottom-left) · content written by ensurePassiveChip51 (overridden in V6) -->
+  <div id="passiveChip51" class="wl6-hud-tag"></div>
+
+  <!-- 6 · COMPANION SPOOLS (bottom-center) -->
+  <div id="abilities"></div>
+
+  <!-- 7 · ARMY PREP (bottom-right) -->
+  <div id="wl6-army" class="wl6-hud-tag">
+    <div class="wl6-hud-row stats">
+      <div class="wl6-stat" title="Capacidad de Construcción · se recupera en cada jefe"><span class="wl6-hud-ico"><svg class="wl6-icon"><use href="#i-spool"/></svg></span><span class="wl6-hud-num" id="wl6-build">0</span><svg class="wl6-icon" style="color:var(--ink-muted)"><use href="#i-infinity"/></svg></div>
+      <div class="wl6-stat" title="Máximo de unidades en el tablero"><span class="wl6-hud-ico"><svg class="wl6-icon"><use href="#i-units"/></svg></span><span class="wl6-hud-num" id="wl6-cap">0</span></div>
+    </div>
+    <div id="wl6-roster"></div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<!-- ===== INTRO / TITLE ===== -->
+<div id="intro" class="overlay show">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="purlBadge" id="wakePurl" title="Comenzar"><canvas id="wl6-introPortrait" width="300" height="300"></canvas></div>
+    <div class="logo"><span data-t="title">CABO ROJO</span><small data-t="subtitle">La Hermandad del Cabo · un juego de WILDLACE</small></div>
+    <p class="copy"><span data-t="introLine1">La Marea Negra descosió el mar.</span> <b data-t="introLine2">Sal de aguas cartografiadas, tiende tu cabo y vuelve</b> <span data-t="introLine3">para bordar en la carta todo lo que encierres.</span></p>
+    <div id="difficultyPicker" class="difficultyPicker"></div>
+    <button id="wakeBtn" class="primary"><svg class="wl6-icon"><use href="#i-needle"/></svg> <span data-t="startRun">Zarpar</span></button>
+    <div class="wl6-copy">© 2026 Yair Cosio · WILDLACE</div>
+    <div class="wl6-intro-links">
+      <button class="secondary" id="wl6-introShop"><svg class="wl6-icon"><use href="#i-pouch"/></svg> <span data-t="shop">Mercado</span></button>
+      <button class="secondary" id="wl6-introBook"><svg class="wl6-icon"><use href="#i-book"/></svg> <span data-t="book">Bitácora</span></button>
+      <button class="secondary" id="wl6-introHelp"><svg class="wl6-icon"><use href="#i-help"/></svg> <span data-t="help">Cómo se navega</span></button>
+      <button class="secondary" id="wl6-lang" title="Español / English">ES · EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HELP (cuaderno visual) ===== -->
+<div id="help" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="kicker" data-t="helpTitle">El cuaderno de bitácora</div>
+    <div class="title" data-t="helpLead">No dibujas un camino. Lo bordas en la carta.</div>
+    <div class="wl6-help-flow">
+      <span class="wl6-step"><svg class="wl6-icon"><use href="#i-shoe"/></svg> <span data-t="helpOut">Sal de la carta</span></span><span class="wl6-arrow">→</span>
+      <span class="wl6-step"><svg class="wl6-icon"><use href="#i-thread"/></svg> <span data-t="helpRope">Tiende cabo</span></span><span class="wl6-arrow">→</span>
+      <span class="wl6-step"><svg class="wl6-icon"><use href="#i-check"/></svg> <span data-t="helpBack">Vuelve y cierra</span></span><span class="wl6-arrow">→</span>
+      <span class="wl6-step"><svg class="wl6-icon"><use href="#i-heart"/></svg> <span data-t="helpLanterns">3 Luminarias</span></span><span class="wl6-arrow">→</span>
+      <span class="wl6-step"><svg class="wl6-icon"><use href="#i-skull"/></svg> <span data-t="helpBuoy">Boya · Jefe</span></span>
+    </div>
+    <div class="wl6-help-grid" id="wl6-helpGrid"></div>
+    <div class="wl6-settings" id="wl6-settings">
+      <div class="wl6-set-row">
+        <span class="lbl" data-t="settings">Ajustes</span>
+        <button class="wl6-toggle" id="set-sound" data-t="sound">Sonido</button>
+        <button class="wl6-toggle" id="set-music" data-t="music">Música</button>
+        <button class="wl6-toggle" id="set-ambient" data-t="ambient">Mar de fondo</button>
+        <button class="wl6-toggle" id="set-lang">ES · EN</button>
+      </div>
+      <div class="wl6-set-row">
+        <span class="lbl" data-t="saveCode">Código de bitácora</span>
+        <button class="wl6-toggle" id="set-export" data-t="exportSave">Copiar mi código</button>
+        <input id="set-import-code" class="wl6-input" placeholder="CR1.…" spellcheck="false">
+        <button class="wl6-toggle" id="set-import" data-t="importSave">Cargar código</button>
+        <button class="wl6-toggle" id="set-download" data-t="downloadSave">Descargar archivo</button>
+        <button class="wl6-toggle" id="set-upload" data-t="uploadSave">Cargar archivo</button>
+        <input id="set-file" type="file" accept=".json,.cabo,application/json" style="display:none">
+        <span id="set-msg" class="wl6-setmsg"></span>
+      </div>
+      <div class="wl6-set-row">
+        <span class="lbl" data-t="quality">Calidad</span>
+        <select id="set-quality" class="wl6-input wl6-select">
+          <option value="auto" data-t="qAuto">Automática</option>
+          <option value="alta" data-t="qHigh">Alta</option>
+          <option value="ligera" data-t="qLite">Ligera</option>
+        </select>
+        <span id="set-fps" class="wl6-setmsg"></span>
+      </div>
+    </div>
+    <div class="row"><button id="closeHelp" class="primary" data-t="back">Regresar</button></div>
+  </div>
+</div>
+
+<!-- ===== PATCHBOOK ===== -->
+<div id="book" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="kicker" data-t="bookPermanent">Bitácora permanente</div>
+    <div class="title" data-t="bookKeep">Tu atlas no vuelve a cero.</div>
+    <div id="bookMeta" class="copy"></div>
+    <div id="levelStrip" class="levelStrip"></div>
+    <div id="bookGrid"></div>
+    <div class="row"><button id="closeBook" class="primary" data-t="back">Regresar</button></div>
+  </div>
+</div>
+
+<!-- ===== SHOP (full-screen destination) ===== -->
+<div id="shop" class="overlay">
+  <div class="card shopCard">
+    <div class="shopTop">
+      <div><div class="kicker" data-t="shopKicker">Cofres · capitanes · banderas · Carta de navegación</div><div class="shopTitle" data-t="shopTitle">El Mercado del Muelle</div></div>
+      <div class="shopTopActions">
+        <div class="shopBalance"><span class="walletCoin"></span><div><b><span id="shopWalletCount">0</span></b><small data-t="coins">Doblones</small></div></div>
+        <button id="closeShop" class="shopClose" aria-label="Cerrar"><svg class="wl6-icon"><use href="#i-close"/></svg></button>
+      </div>
+    </div>
+    <div class="shopScroll">
+      <div id="equipConfirm" class="equipConfirm"></div>
+      <div id="equippedNow" class="equippedNow"></div>
+      <!-- legacy hero kept hidden: #openPackBtn / #shopWalletPacks / #packAvailability / #pityText are read by legacy renderShop -->
+      <div class="shopHero"><div class="packBox premiumPack"><button id="openPackBtn" class="primary packCTA" data-t="open">ABRIR</button><div id="packAvailability" class="packAvailability"></div><small id="shopWalletPacks" class="packCount"></small></div><div class="odds"><div id="pityText" class="pityPanel"></div></div></div>
+      <div class="collectionHead legacy"></div>
+      <div id="collectionGrid" class="collectionGrid"></div>
+      <!-- #shopTabs44 / #shopSections44 are created by ensureShop44() -->
+    </div>
+  </div>
+</div>
+<div id="packCinema" class="packCinema" aria-live="polite"></div>
+
+<!-- ===== LEGACY SKILLS OVERLAY (kept for the #skillBtn hook; V6 redirects to the shop tab) ===== -->
+<div id="skills" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="skillHeader"><div><div class="kicker" data-t="tree">Carta de navegación</div><div class="title" style="font-size:28px" data-t="treeNote">Ahora vive dentro del Mercado</div></div><div class="needleWallet"><svg class="wl6-icon"><use href="#i-pin"/></svg> <span id="needleCount">0</span></div></div>
+    <div id="skillGrid" class="skillGrid"></div>
+    <div class="row"><button id="closeSkills" class="primary" data-t="back">Regresar</button></div>
+  </div>
+</div>
+
+<!-- ===== WORKSHOP (Taller) ===== -->
+<div id="fieldChoice" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="wl6-ws-head"><div class="wl6-portrait"><canvas id="wl6-wsPortrait" width="128" height="128"></canvas></div><div><div class="kicker" data-t="portFound">Puerto a la vista</div><div class="title" style="margin:0"><span data-t="portChoose">Elige una estación</span></div><div class="copy" style="margin:2px 0 0"><span data-t="portLasts">Dura hasta que termine la RUN.</span></div></div></div>
+    <div id="fieldChoices" class="fieldChoices"></div>
+  </div>
+</div>
+
+<!-- ===== TACTICAL BOSS BOARD ===== -->
+<div id="armyBattle" class="overlay">
+  <div class="armyShell">
+    <div class="armyTop">
+      <div class="armyTitle"><div class="kicker">Carta 1 · Fase de Jefe</div><b data-t="board">Tablero de abordaje</b></div>
+      <div class="armyCurrencies">
+        <div class="armyPill" title="Construcción disponible / capacidad de la RUN"><svg class="wl6-icon"><use href="#i-spool"/></svg><span id="armyPointCount">0</span><small data-t="build">Tripulación</small></div>
+        <div class="armyPill" title="Vidas"><svg class="wl6-icon"><use href="#i-heart"/></svg><span id="armyLifeCount">0</span><small data-t="lives">Casco</small></div>
+        <!-- #armyUnitPill is created by ensureV42Dom() -->
+      </div>
+    </div>
+    <div class="armyMain">
+      <div class="battleBoardWrap">
+        <div class="wl6-boss-head">
+          <div class="wl6-portrait"><canvas id="wl6-armyBossPortrait" width="108" height="108"></canvas></div>
+          <div id="armyBossLabel" class="armyBossLabel"></div>
+          <div class="armyBossHp"><i id="armyBossHpFill"></i></div>
+        </div>
+        <div id="armyBoard" class="battleBoard"></div>
+        <div id="armyHint" class="armyHint"><span class="wl6-sw" style="background:#8fb98a"></span> Despliegue <span class="wl6-sw" style="background:var(--gold)"></span> +25% daño <span class="wl6-sw" style="background:var(--sky)"></span> +30% vida</div>
+        <div id="armyBattleResult" class="armyBattleResult"><div><b id="armyResultTitle" data-t="result">RESULTADO</b><div id="armyResultCopy"></div><button id="armyResultBtn" data-t="cont">Continuar</button></div></div>
+      </div>
+      <div class="armySide">
+        <!-- #armyBossInfo43 inserted by ensureV43Dom() before .armyHelp -->
+        <div class="armyHelp"></div>
+        <div id="armyUnitCards" class="unitCards"></div>
+        <div id="armyLog" class="armyLog"></div>
+      </div>
+    </div>
+    <div class="armyActions">
+      <div class="left"><b id="armyFormationInfo">0/4 unidades</b></div>
+      <div><button id="armyResetBtn" class="armyReset" data-t="redo">Rehacer</button><button id="armyStartBtn" class="armyStart" data-t="fight">¡Al abordaje!</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LEVEL END ===== -->
+<div id="levelEnd" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div id="endKicker" class="kicker" data-t="levelDone">CARTA BORDADA</div>
+    <div id="endTitle" class="title">...</div>
+    <div id="endStats" class="stats"></div>
+    <div id="endUnlock" class="unlock"></div>
+    <div class="row"><button id="nextBtn" class="primary" data-t="pull">Zarpar</button><button id="endBook" class="secondary" data-t="book">Bitácora</button></div>
+  </div>
+</div>
+
+<!-- ===== RUN DEFEAT ===== -->
+<div id="gameOver" class="overlay">
+  <div class="card">
+    <div class="stitchBorder"></div>
+    <div class="kicker" data-t="wreck">Naufragio</div>
+    <div class="title" data-t="wreckSub">El casco no aguantó.</div>
+    <div id="deathStats" class="stats"></div>
+    <div class="unlock"><b data-t="keep">No pierdes lo descubierto.</b><span data-t="keepDetail">Carta máxima, tripulación, jefes, banderas y doblones asegurados siguen guardados.</span></div>
+    <div class="row"><button id="retryBtn" class="primary" data-t="retry">Volver a zarpar</button><button id="deathHelp" class="secondary" data-t="help">Cómo se navega</button><button id="deathBook" class="secondary" data-t="book">Bitácora</button></div>
+  </div>
+</div>
+
+<script src="js/wildlace.min.js"></script>
+</body>
+</html>

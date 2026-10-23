@@ -1,0 +1,4 @@
+Red Rope / Cabo Rojo
+Copyright (c) 2026 Yair Osvaldo Cosio Escoto. All rights reserved.
+Game code, art, music and texts are original work. Font: Nunito (SIL Open Font License 1.1).
+This package is provided to game portals for distribution under their developer terms; no other license is granted.
